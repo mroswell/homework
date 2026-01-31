@@ -6,4 +6,4 @@ description: You're signed in. Choose an assignment to continue.
 
 ## Assignments
 
-- [**Homework 2: Git & GitHub Basics**](homework-2) — Learn version control fundamentals
+- [**Homework 1: Git & GitHub Basics**](homework-1) — Learn version control fundamentals
