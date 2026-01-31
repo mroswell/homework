@@ -1,6 +1,6 @@
 ---
 layout: lesson
-title: "Homework 2: Git & GitHub Basics"
+title: "Homework 1: Git & GitHub Basics / Progress Tracker / Bookmarklets / Website"
 description: Learn the fundamentals of version control with Git and GitHub.
 tasks:
   - id: git-workflow
