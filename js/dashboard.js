@@ -30,12 +30,12 @@ async function loadProgressMatrix() {
     container.innerHTML = '<p class="loading">Loading progress data...</p>';
     
     try {
-        const { data: progress, error: progressError } = await supabase
+        const { data: progress, error: progressError } = await db
             .rpc('get_all_progress');
         
         if (progressError) throw progressError;
         
-        const { data: tasks, error: tasksError } = await supabase
+        const { data: tasks, error: tasksError } = await db
             .from('tasks')
             .select('*')
             .order('page_slug')
@@ -43,7 +43,7 @@ async function loadProgressMatrix() {
         
         if (tasksError) throw tasksError;
         
-        const { data: students, error: studentsError } = await supabase
+        const { data: students, error: studentsError } = await db
             .rpc('get_all_students');
         
         if (studentsError) throw studentsError;
@@ -134,7 +134,7 @@ async function loadStudentList() {
     if (!container) return;
     
     try {
-        const { data: students, error } = await supabase
+        const { data: students, error } = await db
             .rpc('get_all_students');
         
         if (error) throw error;
@@ -173,7 +173,7 @@ async function handleRemoveStudent(event) {
     }
     
     try {
-        const { error } = await supabase
+        const { error } = await db
             .rpc('remove_approved_email', { remove_email: email });
         
         if (error) throw error;
@@ -211,7 +211,7 @@ function setupAddStudentForm() {
         submitBtn.textContent = 'Adding...';
         
         try {
-            const { error } = await supabase
+            const { error } = await db
                 .rpc('add_approved_email', {
                     new_email: email,
                     new_name: name,
@@ -252,18 +252,18 @@ function truncate(text, maxLength) {
 
 async function exportProgressCSV() {
     try {
-        const { data: progress, error } = await supabase
+        const { data: progress, error } = await db
             .rpc('get_all_progress');
         
         if (error) throw error;
         
-        const { data: tasks } = await supabase
+        const { data: tasks } = await db
             .from('tasks')
             .select('*')
             .order('page_slug')
             .order('display_order');
         
-        const { data: students } = await supabase
+        const { data: students } = await db
             .rpc('get_all_students');
         
         const studentList = students.filter(s => !s.is_instructor);
