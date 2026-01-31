@@ -11,7 +11,9 @@
         <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
         <nav>
             <a href="{{ '/' | relative_url }}">Home</a>
-            <a href="{{ '/homework-1' | relative_url }}">Homework 1</a>
+            {% for item in site.nav %}
+            <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+            {% endfor %}
             <div id="user-info">
                 <span id="user-name"></span>
                 <a href="{{ '/dashboard' | relative_url }}" id="dashboard-link">Dashboard</a>
@@ -28,14 +30,15 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     
     <!-- App Scripts -->
-    <script src="{{ '/assets/js/config.js' | relative_url }}?v=4"></script>
-    <script src="{{ '/assets/js/auth.js' | relative_url }}?v=4"></script>
+    <script src="{{ '/assets/js/config.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/auth.js' | relative_url }}"></script>
     {% if page.layout == 'lesson' %}
-    <script src="{{ '/assets/js/tasks.js' | relative_url }}?v=4"></script>
+    <script src="{{ '/assets/js/tasks.js' | relative_url }}"></script>
     {% endif %}
     {% if page.layout == 'dashboard' %}
-    <script src="{{ '/assets/js/dashboard.js' | relative_url }}?v=4"></script>
+    <script src="{{ '/assets/js/dashboard.js' | relative_url }}"></script>
     {% endif %}
+    
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
             {% if page.layout == 'home' %}
@@ -44,7 +47,7 @@
             const user = await updateAuthUI();
             {% if page.layout == 'lesson' %}
             if (user) {
-                await initializeTasks(user);
+                await initializeTasks(user, '{{ page.page_id }}');
             }
             {% endif %}
             {% if page.layout == 'dashboard' %}

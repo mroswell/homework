@@ -1,9 +1,10 @@
 ---
 layout: home
-title: Welcome
-description: You're signed in. Choose an assignment to continue.
+title: Home
 ---
 
-## Assignments
+## Homework
 
-- [**Homework 1: Git & GitHub Basics**](homework-1) — Learn version control fundamentals
+{% for item in site.nav %}
+- [{{ item.title }}]({{ item.url | relative_url }})
+{% endfor %}
