@@ -4,8 +4,10 @@
 
 // Only reload once after magic link callback
 if (window.location.hash.includes('access_token')) {
-    window.location.hash = '';
-    window.location.reload();
+    setTimeout(() => {
+        window.location.hash = '';
+        window.location.reload();
+    }, 500);
 }
 
 // Check if user is logged in and authorized
