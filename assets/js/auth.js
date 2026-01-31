@@ -72,13 +72,11 @@ async function signOut() {
         : 'index.html';
 }
 
-db.auth.onAuthStateChange(async (event, session) => {
-    console.log('Auth event:', event);
-    
-    if (event === 'SIGNED_IN' && session) {
-        window.location.reload();
-    }
-});
+// Only reload once after magic link callback (detected by URL hash)
+if (window.location.hash.includes('access_token')) {
+    window.location.hash = '';
+    window.location.reload();
+}
 
 async function updateAuthUI() {
     const user = await checkAuth();
