@@ -11,7 +11,7 @@ async function initializeDashboard(user) {
     
     if (!user.isInstructor) {
         alert('Access denied. Instructor privileges required.');
-        window.location.href = '/homework-2';
+        window.location.href = '/homework-1';
         return;
     }
     
