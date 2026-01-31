@@ -10,7 +10,7 @@ if (window.location.hash.includes('access_token')) {
 
 // Check if user is logged in and authorized
 async function checkAuth() {
-    const { data: { session }, error } = await supabase.auth.getSession();
+    const { data: { session }, error } = await db.auth.getSession();
     
     if (error) {
         console.error('Auth error:', error);
@@ -22,12 +22,12 @@ async function checkAuth() {
     }
     
     // Get user info from approved_emails
-    const { data: userInfo, error: userError } = await supabase
+    const { data: userInfo, error: userError } = await db
         .rpc('get_approved_user_info', { check_email: session.user.email });
     
     if (userError || !userInfo || userInfo.length === 0) {
         console.error('User not in approved list');
-        await supabase.auth.signOut();
+        await db.auth.signOut();
         return null;
     }
     
@@ -41,7 +41,7 @@ async function checkAuth() {
 
 // Send magic link to email
 async function sendMagicLink(email) {
-    const { data: isApproved, error: checkError } = await supabase
+    const { data: isApproved, error: checkError } = await db
         .rpc('is_email_approved', { check_email: email });
     
     if (checkError) {
@@ -52,7 +52,7 @@ async function sendMagicLink(email) {
         throw new Error('This email is not on the approved list. Please contact your instructor.');
     }
     
-    const { error } = await supabase.auth.signInWithOtp({
+    const { error } = await db.auth.signInWithOtp({
         email: email,
         options: {
             emailRedirectTo: window.location.origin + window.location.pathname
@@ -68,7 +68,7 @@ async function sendMagicLink(email) {
 
 // Sign out
 async function signOut() {
-    await supabase.auth.signOut();
+    await db.auth.signOut();
     window.location.href = window.location.origin + '/';
 }
 
