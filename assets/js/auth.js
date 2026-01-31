@@ -15,11 +15,15 @@ async function checkAuth() {
         return null;
     }
     
-    const { data: userInfo, error: userError } = await db
-        .rpc('get_approved_user_info', { check_email: session.user.email });
-    
-    if (userError || !userInfo || userInfo.length === 0) {
-        console.error('User not in approved list');
+const { data: userInfo, error: userError } = await db
+    .rpc('get_approved_user_info', { check_email: session.user.email });
+
+console.log('Session email:', session.user.email);
+console.log('userInfo:', userInfo);
+console.log('userError:', userError);
+
+if (userError || !userInfo || userInfo.length === 0) {
+    console.error('User not in approved list');
         await db.auth.signOut();
         return null;
     }
