@@ -1,7 +1,7 @@
 ---
 layout: lesson
-title: "Homework 1: Git & GitHub Basics"
-description: Learn the fundamentals of version control.
+title: "Homework 1"
+description: Version control with git, Progress tracker, DevTools Console and Bookmarklets, and Build Your Own
 page_id: homework-1
 tasks:
   - id: hw1-git-workflow
