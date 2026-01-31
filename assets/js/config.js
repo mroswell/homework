@@ -3,8 +3,10 @@
 // Replace these with your actual Supabase project values
 // =============================================
 
-const SUPABASE_URL = 'https://YOUR-PROJECT-ID.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...YOUR-KEY-HERE';
+const SUPABASE_URL = 'https://kxkhxuddffqlqfvtnrth.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt4a2h4dWRkZmZxbHFmdnRucnRoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk4MDM5ODUsImV4cCI6MjA4NTM3OTk4NX0.S8YJgLEKoN_GRK6py3KHtLRwnWC_s3LY3cC4vufBmSo';
+// const SUPABASE_ANON_KEY = 'sb_publishable_RKe-giF2o95YB2CylBMUOA_P5_R7h3I';
 
 // Initialize Supabase client
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const { createClient } = supabase;
+const db = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
