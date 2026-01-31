@@ -32,7 +32,7 @@ async function initializeTasks(user) {
 async function loadProgress(checkboxes) {
     const taskIds = Array.from(checkboxes).map(cb => cb.dataset.taskId);
     
-    const { data: progress, error } = await supabase
+    const { data: progress, error } = await db
         .from('progress')
         .select('task_id')
         .eq('user_id', currentUser.id)
@@ -61,7 +61,7 @@ async function handleCheckboxChange(event) {
     
     try {
         if (isChecked) {
-            const { error } = await supabase
+            const { error } = await db
                 .from('progress')
                 .insert({
                     user_id: currentUser.id,
@@ -70,7 +70,7 @@ async function handleCheckboxChange(event) {
             
             if (error) throw error;
         } else {
-            const { error } = await supabase
+            const { error } = await db
                 .from('progress')
                 .delete()
                 .eq('user_id', currentUser.id)
