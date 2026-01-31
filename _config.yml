@@ -1,0 +1,15 @@
+# Site settings
+title: AI Coding Essentials
+description: Track your progress through coding lessons
+baseurl: "/homework"
+
+# Build settings
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+# Exclude from build
+exclude:
+  - README.md
+  - SETUP-GUIDE.md

@@ -1,0 +1,624 @@
+/* =============================================
+   STUDENT PROGRESS TRACKER - STYLES
+   ============================================= */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --color-primary: #2563eb;
+    --color-primary-dark: #1d4ed8;
+    --color-success: #16a34a;
+    --color-success-light: #dcfce7;
+    --color-error: #dc2626;
+    --color-error-light: #fee2e2;
+    --color-gray-50: #f9fafb;
+    --color-gray-100: #f3f4f6;
+    --color-gray-200: #e5e7eb;
+    --color-gray-300: #d1d5db;
+    --color-gray-500: #6b7280;
+    --color-gray-700: #374151;
+    --color-gray-900: #111827;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+    --shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.1), 0 2px 4px rgba(0,0,0,0.06);
+    --radius: 8px;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    line-height: 1.6;
+    color: var(--color-gray-900);
+    background: var(--color-gray-50);
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.container.wide {
+    max-width: 1200px;
+}
+
+header {
+    background: white;
+    border-bottom: 1px solid var(--color-gray-200);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.25rem;
+}
+
+header h1 a {
+    color: var(--color-gray-900);
+    text-decoration: none;
+}
+
+header nav {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+header nav a {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+#user-info {
+    display: none;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.875rem;
+}
+
+#user-name {
+    color: var(--color-gray-700);
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    text-decoration: none;
+    border: none;
+}
+
+.btn-primary {
+    background: var(--color-primary);
+    color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: var(--color-primary-dark);
+}
+
+.btn-primary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.btn-secondary {
+    background: white;
+    color: var(--color-gray-700);
+    border: 1px solid var(--color-gray-300);
+}
+
+.btn-secondary:hover {
+    background: var(--color-gray-50);
+}
+
+.btn-small {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+}
+
+#login-section {
+    display: block;
+}
+
+.login-box {
+    max-width: 400px;
+    margin: 4rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+}
+
+.login-box h2 {
+    margin-top: 0;
+    text-align: center;
+}
+
+.login-box p {
+    color: var(--color-gray-500);
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+#login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#login-form input[type="email"] {
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 1px solid var(--color-gray-300);
+    border-radius: var(--radius);
+    width: 100%;
+}
+
+#login-form input[type="email"]:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+#login-form button {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+}
+
+.message {
+    padding: 0.75rem;
+    border-radius: var(--radius);
+    font-size: 0.875rem;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.message:empty {
+    display: none;
+}
+
+.message.success {
+    background: var(--color-success-light);
+    color: var(--color-success);
+}
+
+.message.error {
+    background: var(--color-error-light);
+    color: var(--color-error);
+}
+
+#content-section {
+    display: none;
+}
+
+.lesson-header {
+    margin-bottom: 2rem;
+}
+
+.lesson-header h2 {
+    margin: 0 0 0.5rem 0;
+}
+
+.lesson-header .description {
+    color: var(--color-gray-500);
+    margin: 0;
+}
+
+.progress-container {
+    background: var(--color-gray-200);
+    border-radius: 999px;
+    height: 8px;
+    margin: 1rem 0;
+    overflow: hidden;
+}
+
+#progress-bar {
+    background: var(--color-success);
+    height: 100%;
+    border-radius: 999px;
+    transition: width 0.3s ease;
+    width: 0%;
+}
+
+#progress-counter {
+    font-size: 0.875rem;
+    color: var(--color-gray-500);
+    margin-bottom: 1.5rem;
+}
+
+.task-list {
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+.task-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--color-gray-100);
+    transition: background 0.15s ease;
+}
+
+.task-item:last-child {
+    border-bottom: none;
+}
+
+.task-item:hover {
+    background: var(--color-gray-50);
+}
+
+.task-item.completed {
+    background: var(--color-success-light);
+}
+
+.task-item.completed label {
+    color: var(--color-gray-500);
+}
+
+.task-item input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-top: 2px;
+    cursor: pointer;
+    accent-color: var(--color-success);
+}
+
+.task-item input[type="checkbox"]:disabled {
+    cursor: wait;
+}
+
+.task-item label {
+    flex: 1;
+    cursor: pointer;
+    line-height: 1.5;
+}
+
+.task-item a {
+    color: var(--color-primary);
+}
+
+.task-item .optional {
+    font-size: 0.75rem;
+    color: var(--color-gray-500);
+    background: var(--color-gray-100);
+    padding: 0.125rem 0.5rem;
+    border-radius: 999px;
+    margin-left: 0.5rem;
+}
+
+.lesson-content {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.lesson-content h1,
+.lesson-content h2,
+.lesson-content h3,
+.lesson-content h4 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.lesson-content h1:first-child,
+.lesson-content h2:first-child,
+.lesson-content h3:first-child {
+    margin-top: 0;
+}
+
+.lesson-content p {
+    margin: 0 0 1rem 0;
+}
+
+.lesson-content ul,
+.lesson-content ol {
+    margin: 0 0 1rem 0;
+    padding-left: 1.5rem;
+}
+
+.lesson-content li {
+    margin-bottom: 0.25rem;
+}
+
+.lesson-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+    margin: 1rem 0;
+}
+
+.lesson-content pre {
+    background: var(--color-gray-100);
+    padding: 1rem;
+    border-radius: var(--radius);
+    overflow-x: auto;
+    margin: 1rem 0;
+}
+
+.lesson-content code {
+    font-family: 'SF Mono', Monaco, 'Courier New', monospace;
+    font-size: 0.875em;
+}
+
+.lesson-content p code,
+.lesson-content li code {
+    background: var(--color-gray-100);
+    padding: 0.125rem 0.375rem;
+    border-radius: 4px;
+}
+
+.lesson-content blockquote {
+    border-left: 4px solid var(--color-primary);
+    margin: 1rem 0;
+    padding: 0.5rem 1rem;
+    background: var(--color-gray-50);
+    color: var(--color-gray-700);
+}
+
+.lesson-content blockquote p:last-child {
+    margin-bottom: 0;
+}
+
+.lesson-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+}
+
+.lesson-content th,
+.lesson-content td {
+    border: 1px solid var(--color-gray-200);
+    padding: 0.5rem;
+    text-align: left;
+}
+
+.lesson-content th {
+    background: var(--color-gray-100);
+    font-weight: 600;
+}
+
+.dashboard-section {
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.dashboard-section h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-gray-200);
+}
+
+.progress-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+}
+
+.progress-table th,
+.progress-table td {
+    padding: 0.5rem;
+    text-align: center;
+    border: 1px solid var(--color-gray-200);
+}
+
+.progress-table th {
+    background: var(--color-gray-100);
+    font-weight: 600;
+}
+
+.progress-table th.page-header {
+    background: var(--color-primary);
+    color: white;
+}
+
+.progress-table th.task-header {
+    font-size: 0.75rem;
+    font-weight: normal;
+    max-width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.progress-table .student-name {
+    text-align: left;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.progress-table .completed {
+    background: var(--color-success-light);
+    color: var(--color-success);
+    font-weight: bold;
+}
+
+.progress-table .incomplete {
+    color: var(--color-gray-300);
+}
+
+.progress-table .total {
+    font-weight: 600;
+    background: var(--color-gray-50);
+}
+
+.summary {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-gray-200);
+    font-size: 0.875rem;
+    color: var(--color-gray-700);
+}
+
+.summary p {
+    margin: 0.25rem 0;
+}
+
+.student-management-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.student-management-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    border-bottom: 1px solid var(--color-gray-100);
+}
+
+.student-management-list li:last-child {
+    border-bottom: none;
+}
+
+.student-info {
+    flex: 1;
+}
+
+.student-info small {
+    color: var(--color-gray-500);
+}
+
+.badge {
+    display: inline-block;
+    font-size: 0.625rem;
+    padding: 0.125rem 0.375rem;
+    border-radius: 999px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-left: 0.5rem;
+}
+
+.badge.instructor {
+    background: var(--color-primary);
+    color: white;
+}
+
+.btn-remove {
+    background: none;
+    border: none;
+    color: var(--color-error);
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    font-size: 1rem;
+    opacity: 0.5;
+    transition: opacity 0.15s;
+}
+
+.btn-remove:hover {
+    opacity: 1;
+}
+
+.add-form {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    margin-bottom: 1.5rem;
+}
+
+.add-form .form-group {
+    flex: 1;
+    min-width: 150px;
+}
+
+.add-form label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+    color: var(--color-gray-700);
+}
+
+.add-form input[type="text"],
+.add-form input[type="email"] {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 0.875rem;
+    border: 1px solid var(--color-gray-300);
+    border-radius: var(--radius);
+}
+
+.add-form input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+}
+
+.add-form .checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding-bottom: 0.5rem;
+}
+
+.add-form .checkbox-group input {
+    width: auto;
+}
+
+.loading {
+    text-align: center;
+    color: var(--color-gray-500);
+    padding: 2rem;
+}
+
+.error {
+    color: var(--color-error);
+}
+
+.hidden {
+    display: none !important;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    header {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    .progress-table {
+        font-size: 0.75rem;
+    }
+    
+    .progress-table th,
+    .progress-table td {
+        padding: 0.25rem;
+    }
+    
+    .add-form {
+        flex-direction: column;
+    }
+    
+    .add-form .form-group {
+        width: 100%;
+    }
+}

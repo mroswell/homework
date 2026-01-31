@@ -1,0 +1,65 @@
+---
+layout: default
+---
+
+<!-- Login Section (shown when logged out) -->
+<section id="login-section">
+    <div class="login-box">
+        <h2>Access Denied</h2>
+        <p>You need to be signed in as an instructor to view the dashboard.</p>
+        <p><a href="{{ '/' | relative_url }}">Go to Sign In Page</a></p>
+    </div>
+</section>
+
+<!-- Content Section (shown when logged in as instructor) -->
+<section id="content-section">
+    <div class="lesson-header">
+        <h2>📊 Instructor Dashboard</h2>
+        <p class="description">View student progress and manage your class roster.</p>
+    </div>
+
+    <!-- Progress Matrix -->
+    <div class="dashboard-section">
+        <h3>
+            Student Progress
+            <button class="btn btn-secondary btn-small" style="float: right;" onclick="exportProgressCSV()">
+                📥 Export CSV
+            </button>
+            <button class="btn btn-secondary btn-small" style="float: right; margin-right: 0.5rem;" onclick="loadProgressMatrix()">
+                🔄 Refresh
+            </button>
+        </h3>
+        <div id="progress-matrix">
+            <p class="loading">Loading progress data...</p>
+        </div>
+    </div>
+
+    <!-- Student Management -->
+    <div class="dashboard-section">
+        <h3>Manage Students</h3>
+        
+        <!-- Add Student Form -->
+        <form id="add-student-form" class="add-form">
+            <div class="form-group">
+                <label for="new-student-name">Name</label>
+                <input type="text" id="new-student-name" placeholder="Jane Doe" required>
+            </div>
+            <div class="form-group">
+                <label for="new-student-email">Email</label>
+                <input type="email" id="new-student-email" placeholder="jane@example.com" required>
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="new-student-instructor">
+                <label for="new-student-instructor">Instructor</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Student</button>
+        </form>
+        
+        <!-- Student List -->
+        <div id="student-list">
+            <p class="loading">Loading students...</p>
+        </div>
+    </div>
+
+    {{ content }}
+</section>
