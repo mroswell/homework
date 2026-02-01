@@ -1,7 +1,8 @@
 # Site settings
 title: AI Coding Essentials
 description: Track your progress through coding lessons
-baseurl: "https://ididmyhomework.com"  # Change to your repo name
+baseurl: ""
+url: "https://ididmyhomework.com"
 
 # Build settings
 markdown: kramdown
