@@ -16,7 +16,7 @@ tasks:
 
   - id: hw1-progress-tracker
     text: Spend 5 minutes filling out your Progress Tracker
-    url: https://mroswell.github.io/ai-coding-essentials/progress-tracker.html
+    url: https://mroswell.github.io/ai-coding-essentials/
     link_text: Progress Tracker
 
   - id: hw1-bookmarklets
