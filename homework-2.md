@@ -1,6 +1,6 @@
 ---
 layout: lesson
-title: "Homework 1"
+title: "Homework 2"
 description: Progress Tracker / Troubleshoot Image Tagger
 page_id: homework-2
 tasks:
